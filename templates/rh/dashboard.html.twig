@@ -1,0 +1,38 @@
+{# templates/rh/dashboard.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord RH{% endblock %}
+
+{% block body %}
+    <h1>L'annuaire d'entreprise</h1>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <h2>Liste des utilisateurs :</h2>
+        <ul>
+            {% for user in users %}
+                <li>
+                    {{ user.firstname }} {{ user.lastname }} - Secteur: {{ user.secteur }} - Contrat: {{ user.typeContrat }}
+                    {% if user.typeContrat != 'CDI' and user.dateSortie %}
+                        - Date de sortie: {{ user.dateSortie|date('d/m/Y') }}
+                    {% endif %}
+                    {% if user.photo %}
+                        - <img src="{{ asset(user.photo) }}" alt="Photo de {{ user.firstname }} {{ user.lastname }}" width="100" height="100">
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <a href="{{ path('app_logout') }}">Déconnexion</a>
+    {% else %}
+        <p>Vous devez être connecté pour voir la liste des utilisateurs.</p>
+        <a href="{{ path('app_login') }}">Connexion</a>
+    {% endif %}
+
+    {% if is_granted('ROLE_RH') %}
+        <a href="{{ path('rh_register') }}">Ajouter un nouvel utilisateur</a>
+    {% endif %}
+{% endblock %}
+
+
+

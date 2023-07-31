@@ -1,0 +1,28 @@
+{# templates/rh/register.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Enregistrement d'un nouvel utilisateur{% endblock %}
+
+{% block body %}
+    <h1>Enregistrement d'un nouvel utilisateur</h1>
+
+    {{ form_start(form) }}
+
+    <h2>Informations personnelles</h2>
+    {{ form_row(form.lastname) }}
+    {{ form_row(form.firstname) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.photo) }}
+
+    <h2>Informations professionnelles</h2>
+    {{ form_row(form.secteur, { 'attr': {'placeholder': 'Sélectionnez un secteur'} }) }}
+    {{ form_row(form.typeContrat, { 'attr': {'placeholder': 'Sélectionnez un type de contrat'} }) }}
+    {{ form_row(form.dateSortie, { 'attr': {'placeholder': 'jj/mm/aaaa'} }) }}
+
+    {{ form_row(form.password, { 'label': 'Mot de passe', 'attr': {'autocomplete': 'new-password'} }) }}
+    <button type="submit">Enregistrer</button>
+    {{ form_end(form) }}
+{% endblock %}
+
+
