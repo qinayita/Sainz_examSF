@@ -1,28 +1,18 @@
-{# templates/base.html.twig #}
-
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- ... autres balises meta, liens CSS, etc. ... -->
+    <meta charset="UTF-8">
+    <title>{% block title %}Annuaire{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {% block stylesheets %}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {% endblock %}
+
+
 </head>
 <body>
-<nav>
-    <ul>
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
-        {% else %}
-            <li><a href="{{ path('app_login') }}">Connexion</a></li>
-        {% endif %}
-    </ul>
-</nav>
-
-<div>
-    {% block body %}{% endblock %}
-</div>
+{% block header %}
+{% endblock %}
+{% block body %}{% endblock %}
 </body>
 </html>
-
-
-
-
-

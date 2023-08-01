@@ -5,10 +5,11 @@
 {% block title %}L'annuaire d'entreprise{% endblock %}
 
 {% block body %}
-    <h1>L'annuaire d'entreprise</h1>
-    {# Vous pouvez ajouter ici le formulaire de connexion si nécessaire #}
-    {# Et afficher la liste des utilisateurs uniquement si l'utilisateur est connecté #}
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ path('app_logout') }}">Déconnexion</a>
+        {% if is_granted('ROLE_RH') %}
+            <a href="{{ path('rh_register') }}">Ajouter un nouvel utilisateur</a>
+        {% endif %}
         <h2>Liste des utilisateurs :</h2>
         <ul>
             {% for user in users %}
@@ -23,6 +24,10 @@
                 </li>
             {% endfor %}
         </ul>
+    {% else %}
+        <a href="{{ path('app_login') }}">Connexion</a>
     {% endif %}
 {% endblock %}
+
+
 

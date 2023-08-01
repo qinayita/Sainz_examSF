@@ -15,11 +15,11 @@ app_rh_register:
     path: /rh/register
     controller: App\Controller\RHController::register
 
-app_rh_add_user:
-    path: /rh/add-user
-    controller: App\Controller\RHController::addUser
 
 app_register:
     path: /register
     controller: App\Controller\RegistrationController::register
 
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login

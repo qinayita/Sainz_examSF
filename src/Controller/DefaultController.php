@@ -9,7 +9,7 @@ use App\Repository\UserRepository; // Assurez-vous d'importer le référentiel d
 
 class DefaultController extends AbstractController
 {
-    #[Route('/', name: 'app_default')]
+    #[Route('/default', name: 'app_default')]
     public function index(UserRepository $userRepository): Response
     {
         // Récupérer la liste de tous les utilisateurs

@@ -7,6 +7,12 @@
 {% block body %}
     <h1>L'annuaire d'entreprise</h1>
     {# Vous pouvez ajouter ici le formulaire de connexion si nécessaire #}
+    <a href="{{ path('app_login') }}">Login</a>
+
+    {{ if app.user }}
+    <a href="{{ path('app_logout') }}">Logout</a>
+
+    {{ endif }}
 {% endblock %}
 
 
